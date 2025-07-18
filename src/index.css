@@ -6,35 +6,34 @@
 
 @layer base {
   :root {
-    /* Inspired by serene lake sunset colors */
-    --background: 8 12 20;
+    /* Kaydio Cinematic Palette */
+    --background: 10 10 15; /* #0A0A0F */
     --foreground: 255 255 255;
     --card: 15 20 30;
     --card-foreground: 255 255 255;
     --popover: 15 20 30;
     --popover-foreground: 255 255 255;
     
-    /* Wellness-inspired palette from the lake image */
-    --primary: 148 91 201;
+    /* Primary Gradient Colors */
+    --primary: 264 45% 58%; /* #945BC9 - Amethyst */
     --primary-foreground: 255 255 255;
-    --secondary: 57 150 250;
+    --secondary: 213 94% 68%; /* #3996FA - Dodger Blue */
     --secondary-foreground: 255 255 255;
     --muted: 30 35 45;
     --muted-foreground: 156 163 175;
-    --accent: 217 61 141;
+    --accent: 329 69% 58%; /* #D93D8D - Deep Cerise */
     --accent-foreground: 255 255 255;
     
-    /* Sunset-inspired colors */
-    --sunset-pink: 255 182 193;
-    --sunset-orange: 255 160 122;
-    --sunset-purple: 186 164 255;
-    --lake-blue: 135 206 235;
-    --forest-green: 46 125 50;
+    /* Extended Gradient Palette */
+    --amethyst: 264 45% 58%; /* #945BC9 */
+    --dodger-blue: 213 94% 68%; /* #3996FA */
+    --deep-cerise: 329 69% 58%; /* #D93D8D */
+    --razzmatazz: 340 82% 52%; /* #EB1C6B */
     --destructive: 239 68 68;
     --destructive-foreground: 255 255 255;
     --border: 39 44 54;
     --input: 39 44 54;
-    --ring: 148 91 201;
+    --ring: 264 45% 58%;
     --radius: 0.75rem;
   }
 }
@@ -48,12 +47,8 @@
     @apply bg-background text-foreground;
 
     font-family: Inter, system-ui, -apple-system, sans-serif;
-    background: linear-gradient(135deg, 
-      hsl(8deg 12 20) 0%, 
-      hsl(12deg 15 25) 25%, 
-      hsl(16deg 18 30) 50%, 
-      hsl(8deg 12 20) 100%
-    );
+    background: #0A0A0F;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -61,56 +56,132 @@
   }
 }
 
-/* Custom animations for wellness theme */
-@keyframes gentle-float {
-  0%, 100% { 
-    transform: translateY(0) rotate(0deg);
-    opacity: 60%;
+/* Cinematic Animations */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
   }
 
-  50% { 
-    transform: translateY(-15px) rotate(2deg);
-    opacity: 80%;
+  50% {
+    background-position: 100% 50%;
   }
 }
 
-@keyframes ripple {
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 
+      0 0 20px hsl(var(--amethyst), 0.3),
+      0 0 40px hsl(var(--dodger-blue), 0.2),
+      0 0 60px hsl(var(--deep-cerise), 0.1);
+  }
+
+  50% {
+    box-shadow: 
+      0 0 30px hsl(var(--amethyst), 0.5),
+      0 0 60px hsl(var(--dodger-blue), 0.3),
+      0 0 90px hsl(var(--deep-cerise), 0.2);
+  }
+}
+
+@keyframes text-shimmer {
   0% {
-    transform: scale(0.8);
-    opacity: 100%;
+    background-position: -200% center;
   }
 
   100% {
-    transform: scale(2.4);
-    opacity: 0%;
+    background-position: 200% center;
   }
 }
 
-@keyframes aurora {
+@keyframes float-gentle {
   0%, 100% {
-    opacity: 30%;
-    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    transform: translateY(0);
   }
 
-  33% {
-    opacity: 60%;
-    transform: translateX(-50%) translateY(-50%) rotate(120deg);
-  }
-
-  66% {
-    opacity: 40%;
-    transform: translateX(-50%) translateY(-50%) rotate(240deg);
+  50% {
+    transform: translateY(-10px);
   }
 }
 
-.gentle-float {
-  animation: gentle-float 8s ease-in-out infinite;
+/* Utility Classes */
+.gradient-shift {
+  animation: gradient-shift 8s ease-in-out infinite;
+  background-size: 200% 200%;
 }
 
-.ripple-effect {
-  animation: ripple 3s ease-out infinite;
+.pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
 }
 
-.aurora-effect {
-  animation: aurora 20s ease-in-out infinite;
+.text-shimmer {
+  animation: text-shimmer 3s ease-in-out infinite;
+}
+
+.float-gentle {
+  animation: float-gentle 6s ease-in-out infinite;
+}
+
+/* Glass Morphism */
+.glass-morph {
+  background: rgb(255 255 255 / 5%);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgb(255 255 255 / 10%);
+}
+
+.glass-morph-strong {
+  background: rgb(255 255 255 / 8%);
+  backdrop-filter: blur(30px);
+  border: 1px solid rgb(255 255 255 / 15%);
+}
+
+/* Kaydio Brand Gradients */
+.kaydio-gradient {
+  background: linear-gradient(135deg, 
+    hsl(var(--amethyst)) 0%,
+    hsl(var(--dodger-blue)) 25%,
+    hsl(var(--deep-cerise)) 50%,
+    hsl(var(--razzmatazz)) 100%
+  );
+}
+
+.kaydio-gradient-text {
+  background: linear-gradient(135deg, 
+    hsl(var(--amethyst)) 0%,
+    hsl(var(--dodger-blue)) 25%,
+    hsl(var(--deep-cerise)) 50%,
+    hsl(var(--razzmatazz)) 100%
+  );
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(255 255 255 / 5%);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, 
+    hsl(var(--amethyst)) 0%,
+    hsl(var(--dodger-blue)) 100%
+  );
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, 
+    hsl(var(--deep-cerise)) 0%,
+    hsl(var(--razzmatazz)) 100%
+  );
 }
